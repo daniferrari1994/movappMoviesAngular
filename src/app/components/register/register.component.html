@@ -1,0 +1,118 @@
+<div id="register" class="container d-flex align align-items-center flex-column mt-5">
+
+
+  <img id="logo" class="mb-4 logo" src="../assets/movie.png" alt="" width="100" height="100">
+  <h1 class="h3 mb-3 fw-normal">Registro Nuevo Usuario</h1>
+
+  <form [formGroup]="registroForm" class="m-3 col-lg-6">
+
+
+    <div class="item-form my-3">
+      <mat-form-field class="inputs" appearance="fill">
+        <mat-label for="nombre">Nombre</mat-label>
+        <input matInput autocomplete="on" type="text" id="nombre" name="nombre" placeholder="Nombre"
+          class="form-control" formControlName="nombre">
+      </mat-form-field>
+      <div *ngIf="nombreControl.invalid && (nombreControl.dirty || nombreControl.touched)" class="alert alert-danger">
+        <div *ngIf="nombreControl.hasError('required')">
+          El nombre es un campo requerido.
+        </div>
+        <div *ngIf="nombreControl.hasError('maxlength')">
+          La cantidad de caracteres no puede ser mayor que 25.
+        </div>
+      </div>
+    </div>
+
+    <div class="item-form my-3 ">
+      <mat-form-field class="inputs" appearance="fill">
+        <mat-label for="apellido">Apellido</mat-label>
+        <input matInput autocomplete="on" type="text" id="apellido" name="apellido" placeholder="Apellido"
+          class="form-control" formControlName="apellido">
+      </mat-form-field>
+
+      <div *ngIf="apellidoControl.invalid && (apellidoControl.dirty || apellidoControl.touched)"
+        class="alert alert-danger">
+        <div *ngIf="apellidoControl.hasError('required')">
+          El apellido es requerido.
+        </div>
+        <div *ngIf="apellidoControl.hasError('maxlength')">
+          La cantidad de caracteres no puede ser mayor que 25.
+        </div>
+      </div>
+    </div>
+
+    <div class="item-form my-3 ">
+      <mat-form-field class="inputs" appearance="fill">
+        <mat-label for="movil">Movil</mat-label>
+        <input matInput autocomplete="on" type="text" id="movil" name="movil" placeholder="Movil" class="form-control"
+          formControlName="movil">
+      </mat-form-field>
+      <div *ngIf="movilControl.invalid && (movilControl.dirty || movilControl.touched)" class="alert alert-danger">
+        <div *ngIf="movilControl.hasError('required')">
+          El numero del movil es requerido.
+        </div>
+        <div *ngIf="movilControl.hasError('pattern')">
+          El numero del movil ingresado no tiene un formato valido. (ej: +xx xxx xxxxx).
+        </div>
+      </div>
+    </div>
+
+    <div class="item-form my-3 ">
+      <mat-form-field class="inputs" appearance="fill">
+        <mat-label for="address">Direccion</mat-label>
+        <input matInput autocomplete="on" type="text" id="address" name="address" placeholder="Calle 1234"
+          class="form-control" formControlName="address">
+      </mat-form-field>
+      <div *ngIf="addressControl.invalid && (addressControl.dirty || addressControl.touched)"
+        class="alert alert-danger">
+        <div *ngIf="addressControl.hasError('required')">
+          La direccion es requerida.
+        </div>
+        <div *ngIf="addressControl.hasError('pattern')">
+          La direccion ingresada no tiene un formato valido (ej: Sarmiento 1245)
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="item-form my-3 ">
+      <mat-form-field class="inputs" appearance="fill">
+        <mat-label for="email">Email</mat-label>
+        <input matInput autocomplete="on" type="email" id="email" name="email" placeholder="example@dominio.com"
+          class="form-control" formControlName="email">
+      </mat-form-field>
+      <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)" class="alert alert-danger">
+        <div *ngIf="emailControl.hasError('required')">
+          El email es requerido
+        </div>
+        <div *ngIf="emailControl.hasError('email')">
+          El mail ingresado no cumple un formato válido de email. (ej: nombre@google.com)
+        </div>
+      </div>
+    </div>
+
+    <div class="item-form my-3 ">
+      <mat-form-field class="inputs" appearance="fill">
+        <mat-label for="password">Password</mat-label>
+        <input matInput autocomplete="on" type="password" id="password" name="password" placeholder=""
+          class="form-control" formControlName="password">
+      </mat-form-field>
+      <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)"
+        class="alert alert-danger">
+        <div *ngIf="passwordControl.hasError('required')">
+          La contraseña es requerida
+        </div>
+        <div *ngIf="passwordControl.hasError('minlength')">
+          La contraseña debe tener al menos 8 caracteres
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-sesion btn btn-lg btn-primary" [disabled]="registroForm.invalid"
+      (click)="registroUser()">Registrarme</button>
+
+
+  </form>
+
+</div>

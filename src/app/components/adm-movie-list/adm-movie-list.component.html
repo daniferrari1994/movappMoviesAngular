@@ -1,0 +1,109 @@
+<div id="lista" class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-5" id="list-movies">
+      <h2 class="pb-4">Listado de Peliculas</h2>
+
+      <button type="button" class="btn btn-success m-5" (click)= "newMovie()">Agregar Nueva Pelicula</button>
+
+      <app-adm-movie-item *ngFor="let movie of movies; let i = index"
+      [movie]=movie [index]=i+1
+      [class.selected]="isSelected(movie)"
+      (click)= "clickMovie(movie)">
+      </app-adm-movie-item>
+
+    </div>
+
+    <div id="inicioform" class="col-7 abm-container">
+
+      <h2>Seccion Administracion de Peliculas - ABM</h2>
+
+      <div class="form-container pt-5">
+
+        <form [formGroup]="movieEditForm" class="">
+
+         <div class="item-form my-3">
+            <mat-form-field class="inputs" appearance="fill">
+              <mat-label for="nombre">Id</mat-label>
+              <input matInput disabled autocomplete="off"  type="text" [value]="idValue" id="id" name="id" placeholder="" class="form-control" >
+            </mat-form-field>
+
+          </div>
+
+          <div class="item-form my-3">
+            <mat-form-field class="inputs" appearance="fill">
+              <mat-label for="nombre">Titulo</mat-label>
+              <input matInput autocomplete="off" type="text" id="title" name="title" placeholder="Titulo"
+                class="form-control" formControlName="title">
+            </mat-form-field>
+            <div *ngIf="titleControl.invalid && (titleControl.dirty || titleControl.touched)" class="alert alert-danger">
+              <div *ngIf="titleControl.hasError('required')">
+                El titulo es un campo requerido.
+              </div>
+            </div>
+          </div>
+
+          <div class="item-form my-3">
+            <mat-form-field class="inputs" appearance="fill">
+              <mat-label for="nombre">Poster Path</mat-label>
+              <input matInput autocomplete="off" type="text" id="poster_path" name="poster_path"
+                placeholder="Poster Path" class="form-control" formControlName="poster_path">
+            </mat-form-field>
+            <div *ngIf="poster_pathControl.invalid && (poster_pathControl.dirty || poster_pathControl.touched)" class="alert alert-danger">
+              <div *ngIf="poster_pathControl.hasError('required')">
+                La url del poster es un campo requerido.
+              </div>
+            </div>
+          </div>
+
+          <div class="item-form my-3">
+            <mat-form-field class="inputs" appearance="fill">
+              <mat-label for="nombre">Popularidad</mat-label>
+              <input matInput autocomplete="off" type="text" id="vote_average" name="popularity" placeholder="Popularidad"
+                class="form-control" formControlName="vote_average">
+            </mat-form-field>
+            <div *ngIf="vote_averageControl.invalid && (vote_averageControl.dirty || vote_averageControl.touched)" class="alert alert-danger">
+              <div *ngIf="vote_averageControl.hasError('required')">
+                La popularidad es un campo requerido.
+              </div>
+            </div>
+          </div>
+
+          <div class="item-form my-3">
+            <mat-form-field class="inputs" appearance="fill">
+              <mat-label for="nombre">Fecha Lanzamiento</mat-label>
+              <input matInput autocomplete="off" type="date" id="release_date"  name="release_date" placeholder=""
+                class="form-control" formControlName="release_date">
+              </mat-form-field>
+              <div *ngIf="release_dateControl.invalid && (release_dateControl.dirty || release_dateControl.touched)" class="alert alert-danger">
+                <div *ngIf="release_dateControl.hasError('required')">
+                  La fecha es un campo requerido.
+                </div>
+              </div>
+          </div>
+
+          <div class="item-form my-3">
+            <mat-form-field class="inputs" appearance="fill">
+              <textarea matInput autocomplete="off" id="overview" name="overview" placeholder="Descripcion"
+                class="form-control" formControlName="overview"></textarea>
+            </mat-form-field>
+            <div *ngIf="overviewControl.invalid && (overviewControl.dirty || overviewControl.touched)" class="alert alert-danger">
+              <div *ngIf="overviewControl.hasError('required')">
+                La descripcion es un campo requerido.
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex mt-5 justify-content-center">
+            <button type="button" class="btn btn-success m-5" [disabled]="idValue!=0" (click)="addMovie()">Agregar</button>
+            <button type="button" class="btn btn-secondary m-5" [disabled]="idValue==0 || movieEditForm.invalid" (click)="updateMovie()">Modificar</button>
+            <button type="button" class="btn btn-danger m-5 " [disabled]="idValue==0 || movieEditForm.invalid" (click)="deleteMovie()">Eliminar</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>

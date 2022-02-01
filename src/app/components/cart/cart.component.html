@@ -1,0 +1,30 @@
+<div id="carrito" class="container" >
+
+  <h1 style= "text-align: center; font-size: 3rem;" class="mb-4">Carrito</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="font-size: 2rem;" scope="col">#</th>
+        <th style="font-size: 2rem;" scope="col">Poster</th>
+        <th style="font-size: 2rem;" scope="col">Titulo</th>
+        <th style="font-size: 2rem;" scope="col">Operaciones</th>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let movie of cartMovies">
+      <th scope="row">{{movie.id}}</th>
+      <td><img [src]="urlPath+movie.poster_path" alt="" style="height: 120px;"></td>
+      <td><h2>{{movie.title}}</h2></td>
+      <td>
+        <button button type="button" class="btn btn-danger mx-2" (click)="removeMovieFromCart(movie)">Borrar</button>
+        <button button type="button" class="btn btn-primary mx-2" (click)="returnToDetailMovie(movie)">Ver Info</button>
+      </td>
+    </tr>
+  </table>
+
+  <div class="d-flex justify-content-around">
+    <button type="button" class="btn btn-success m-5" (click)="goBack()">Volver</button>
+    <button type="button" class="btn btn-danger m-5 " (click)="emptyCart()">Vaciar Carrito</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.login {
+  background-color: rgba(32, 32, 32, 0.377);
+  margin: 10% 15%;
+  border-radius: 15px;
+  text-align: center;
+
+  h1{
+    color: rgb(182, 182, 182);
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  form{
+    mat-form-field{
+      text-align: center;
+
+      mat-label{
+        color: rgb(182, 182, 182);
+      }
+    }
+
+    p{
+      font-family: 'Roboto', sans-serif;
+      color: rgb(182, 182, 182);
+      margin-top: 10px;
+    }
+  }
+}
