@@ -1,0 +1,42 @@
+#cartelera{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+
+  h1{
+    color: rgb(230, 158, 76);
+    font-family: 'Bebas Neue', cursive;
+    font-size: 90px;
+    margin-top: 20px;
+  }
+
+  .movie-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    mat-card{
+      mat-card-header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        text-align: center;
+
+        h3{
+          font-family: 'Roboto', sans-serif;
+          font-size: 18px;
+        }
+      }
+      mat-card-actions{
+        button{
+          display:block;
+          margin: 0px auto;
+          width: 45%;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,9 @@
-<p class="py-2">
-  <span class="p-3"># {{index}} </span >
-  <img [src]="urlPath+movie.poster_path" alt="" width="100px" height="170px">
-  <span class="p-3">{{movie.title}}</span>
-</p>
+<div class="card" style="width: 14rem;">
+  <img [src]="urlPath+movie.poster_path" class="card-img-top">
+  <div class="card-body">
+    <h6 class="card-title">{{movie.title}}</h6>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">ID #{{index}}</li>
+  </ul>
+</div>

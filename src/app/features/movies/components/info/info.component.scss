@@ -1,0 +1,37 @@
+#info{
+  h1{
+    color: rgb(230, 158, 76);
+    font-family: 'Bebas Neue', cursive;
+    font-size: 90px;
+    margin-top: 20px;
+  }
+
+  section{
+    background-color: rgba(32, 32, 32, 0.377);
+    margin: 20px;
+    border-radius: 20px;
+
+    div{
+      #divisor{
+        display: flex;
+        flex-wrap: wrap;
+
+        .info-div{
+          padding: 30px;
+
+          h2{
+            color: rgb(212, 80, 157);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 90px;
+            margin-top: 20px;
+          }
+
+          h3, p{
+            font-family: 'Roboto', sans-serif;
+            color: rgb(182, 182, 182);
+          }
+        }
+      }
+    }
+  }
+}
