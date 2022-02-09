@@ -1,0 +1,31 @@
+<div id="carrito" class="container">
+  <h1>Carrito</h1>
+
+  <div class="btn-actions-container">
+    <button mat-raised-button color="primary" class="btn-action" (click)="goBack()">Volver a Cartelera</button>
+    <button mat-raised-button color="warn" class="btn-action"
+      (click)="emptyCart()" [disabled]="cartMovies.length==0">Vaciar Carrito</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr class="row-header">
+        <th style="font-size: 2rem;" scope="col">#Id</th>
+        <th style="font-size: 2rem;" scope="col">Poster</th>
+        <th style="font-size: 2rem;" scope="col">Titulo</th>
+        <th style="font-size: 2rem;" scope="col">Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-body" *ngFor="let movie of cartMovies">
+        <td><span class="text-item-cart">{{movie.id}}</span></td>
+        <td><img [src]="urlPath+movie.poster_path" alt="Poster"></td>
+        <td><span class="text-item-cart">{{movie.title}}</span></td>
+        <td>
+          <button button type="button" class="btn btn-danger mx-2" (click)="removeMovieFromCart(movie)">Borrar</button>
+          <button button type="button" class="btn btn-primary mx-2" (click)="returnToDetailMovie(movie)">Ver Info</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

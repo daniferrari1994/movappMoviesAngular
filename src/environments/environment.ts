@@ -7,6 +7,8 @@ export const environment = {
 
    urlLocalCart :'http://localhost:3000/api/cart',
 
-   urlLocalLogin :'http://localhost:3000/api/login'
+   urlLocalLogin :'http://localhost:3000/api/login',
+
+   urlPathImage: 'https://image.tmdb.org/t/p/w500'
 
 };

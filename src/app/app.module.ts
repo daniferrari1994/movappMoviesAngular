@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CartComponent } from './components/cart/cart.component';
 import { MenuNavComponent } from './components/menu/menu.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -16,6 +15,7 @@ import { interceptorService } from './interceptors/interceptor.service';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './store/menu-user.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 
 
@@ -24,7 +24,6 @@ import { appReducer } from './store/menu-user.reducer';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CartComponent,
     MenuNavComponent,
     AdmMovieListComponent,
     AdmMovieItemComponent,
@@ -38,6 +37,7 @@ import { appReducer } from './store/menu-user.reducer';
     MaterialModule,
     StoreModule.forRoot({app: appReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25}),
+    EffectsModule.forRoot([]),
   ],
 
  providers: [
