@@ -1,14 +1,11 @@
 export const environment = {
   production: false,
 
-   urlMockMovies: 'https://61d4aafe8df81200178a8def.mockapi.io/movies',
-
-   urlUsersAPI:  'https://61f474d310f0f7001768c92f.mockapi.io/persons/persons',
-
-   urlLocalCart :'http://localhost:3000/api/cart',
+   urlMockPelis: 'https://61d4aafe8df81200178a8def.mockapi.io/movies',
 
    urlLocalLogin :'http://localhost:3000/api/login',
 
-   urlPathImage: 'https://image.tmdb.org/t/p/w500'
+   urlLocalCart :'http://localhost:3000/api/cart',
 
+   urlPathImage: 'https://image.tmdb.org/t/p/w500'
 };

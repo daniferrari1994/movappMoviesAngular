@@ -9,8 +9,6 @@ import { cartReducer } from './store/cart.reducer';
 import { StoreModule } from '@ngrx/store';
 import { MaterialModule } from 'src/app/material/material.module';
 
-
-
 @NgModule({
   declarations: [
     CartComponent
