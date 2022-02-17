@@ -14,8 +14,9 @@ import { AdmMovieItemComponent } from './components/adm-movie-item/adm-movie-ite
 import { interceptorService } from './interceptors/interceptor.service';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { appReducer } from './store/menu-user.reducer';
+import { userReducer } from './store/menu-user.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -35,7 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    StoreModule.forRoot({app: appReducer}, {}),
+    StoreModule.forRoot({user: userReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25}),
     EffectsModule.forRoot([]),
   ],

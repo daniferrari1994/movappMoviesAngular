@@ -40,8 +40,6 @@ const routes: Routes = [
     canActivate: [AdminRoleGuard],
     component: AdmMovieListComponent
   },
-
-
 ];
 
 @NgModule({

@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import { userState } from './user-state.model';
-import { userDiplay } from './menu-user.actions';
+import { userClear, userDiplay } from './menu-user.actions';
 
 export const userInitialState: userState = { username: "", role: "" }
 
 
-const _appReducer = createReducer(
+const _userReducer = createReducer(
   userInitialState,
   on(userDiplay, (state, { username, role }) => {
     return {
@@ -13,9 +13,13 @@ const _appReducer = createReducer(
       username: username,
       role: role
     };
-  })
+  }),
+
+  on(userClear, () => ({
+    ...userInitialState
+  }))
 );
 
-export function appReducer(state: any, action: any) {
-  return _appReducer(state, action);
+export function userReducer(state: any, action: any) {
+  return _userReducer(state, action);
 }

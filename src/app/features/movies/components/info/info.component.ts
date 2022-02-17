@@ -1,9 +1,12 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+import { CartState } from 'src/app/features/cart/store/cart-store.model';
+import { cartAddMovie } from 'src/app/features/cart/store/cart.actions';
 import { MovieAPI } from 'src/app/models/movieAPI.model';
 import { CartService } from 'src/app/services/cart.service';
-import Swal from 'sweetalert2';
-
+import { environment } from 'src/environments/environment.prod';
 import { MovieService } from '../../services/movie.service';
 
 @Component({
@@ -11,55 +14,40 @@ import { MovieService } from '../../services/movie.service';
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.scss']
 })
-
-export class InfoComponent implements OnInit, OnDestroy, AfterViewInit {
+export class InfoComponent implements OnInit {
 
   movie: MovieAPI | any;
-  urlPath: string = 'https://image.tmdb.org/t/p/w500';
-  popularidad_full_star : number[] =[];
-  popularidad_half_star : number[] =[];
-  fullStar:number =0;
-  halfStar:number =0;
+  urlPath: string = environment.urlPathImage
 
+  private subscrptionsInfo = new Subscription;
+  private movieList$!: Observable<CartState>;
+  private status: string = "";
   constructor(
     private activateRoute: ActivatedRoute,
     private moviesService: MovieService,
-    private cartService : CartService,
+    private cartService: CartService,
     private router: Router,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
 
-    console.log("Info On Init - Status OK");
+    this.subscrptionsInfo.add(
 
-    this.moviesService.getDetailAPI(this.activateRoute.snapshot.params['id'])
-    .subscribe(respose => {this.movie = respose
-   });
+      this.moviesService.getDetailAPI(this.activateRoute.snapshot.params['id'])
+        .subscribe(respose => {
+          this.movie = respose
+        }
+        )
+    )
   }
 
-  ngAfterViewInit(): void {
-    console.log("Info After View Init - Status OK");
+  addMovie(movie: MovieAPI) {
+    this.store.dispatch(cartAddMovie({ movie: movie }))
   }
 
-  ngOnDestroy(): void {
-    console.log("Info On Destroy - Status OK");
-  }
-
-  addMovie(movie: MovieAPI){
-
-    this.cartService.addMovie(movie).subscribe(response =>{
-
-      console.log(response);
-      if (response.status !== 'OK'){
-        Swal.fire("No se agrego la pelicula", "La pelicula seleccionada, ya existe en el carrito", "error");
-      }else{
-        Swal.fire("Nueva pelicula agregada", "Agregado con exito", "success");
-        this.router.navigate(['carrito']);
-      }
-    });
-  }
-
-  returnToMovies(){
+  returnToMovies() {
     this.router.navigate(['cartelera']);
   }
+
 }

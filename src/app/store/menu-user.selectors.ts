@@ -1,9 +1,7 @@
-import { createSelector } from "@ngrx/store";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { userState } from "./user-state.model";
 
-
-
-export const userSelector = (state: any) => state.app;
+export const userSelector = createFeatureSelector<userState>('user');
 
 export const userDisplaySelector = createSelector(
   userSelector,
